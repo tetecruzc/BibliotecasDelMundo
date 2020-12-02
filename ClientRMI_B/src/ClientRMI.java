@@ -8,7 +8,6 @@
  *
  * @author Tete
  */
-import java.io.File;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 
@@ -22,11 +21,13 @@ public class ClientRMI {
         try{
             Registry registro = LocateRegistry.getRegistry("127.0.0.1",7778);
             RMI interfaz =(RMI)registro.lookup("RemoteRMI"); // busca el obj remoto en el registro RMI de la maquina remota
-            System.out.println(interfaz.pedirLibro("Harry Potter"));
+            int suma;
+           // suma = interfaz.sumar(3,4);
+           // System.out.println("LA SUMA ES:"+suma);
         }
         catch(Exception ex){
             System.out.println(ex);
         }
-    }
-    
+    }    
 }
+

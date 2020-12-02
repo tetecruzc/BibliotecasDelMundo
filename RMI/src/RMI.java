@@ -11,7 +11,14 @@
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
+
 public interface RMI extends Remote{
-    public int sumar(int n1, int n2) throws RemoteException;
-   // public int restar(int n1, int n2) throws RemoteException;  
+    public String pedirLibro(String title) throws RemoteException; 
+   // public void pedirAutor(String title) throws RemoteException; 
+    public String buscarTitulo(String title) throws RemoteException; 
+   // public void buscarAutor(String title) throws RemoteException; 
+   // public void encontrarVol(String title) throws RemoteException; 
+   // public void encontrarAutor(String title) throws RemoteException; 
+   // public void getTitle(String title) throws RemoteException; 
+   // public void getAuthor(String title) throws RemoteException; 
 }

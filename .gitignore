@@ -6,3 +6,7 @@
 /ServerRMI/dist/
 /ClientRMI/nbproject/private/
 /ClientRMI/build/
+/ClientRMI_B/nbproject/private/
+/ServerRMI_B/nbproject/private/
+/ServerRMI_B/build/
+/ClientRMI_B/build/

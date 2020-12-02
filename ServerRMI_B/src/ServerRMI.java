@@ -9,15 +9,12 @@
  * @author Tete
  */
 import java.io.File;
-import java.io.IOException;
-import java.io.InputStream;
 import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.parsers.ParserConfigurationException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -25,7 +22,12 @@ import org.w3c.dom.NodeList;
 
 
 public class ServerRMI extends UnicastRemoteObject implements RMI{
-    
+
+    @Override
+    public String pedirLibro(String title) throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    } // Hay que hacer varios rmi porque me pide iplementar todos los métodos abstractos
+     
        enum Tags{
            book,
            name,
@@ -67,7 +69,7 @@ public class ServerRMI extends UnicastRemoteObject implements RMI{
     }
     
     @Override 
-    public String pedirLibro(String name) throws RemoteException{
+    public String buscarTitulo(String name) throws RemoteException{
         Book book = null;
          try{
              NodeList nodeList = getTag(Tags.book.toString());         
@@ -80,18 +82,17 @@ public class ServerRMI extends UnicastRemoteObject implements RMI{
     }
     
     public String getTitle(String name) throws RemoteException{
-       return this.pedirLibro(name);
-    }
-     
-    public static void main(String[] args) throws IOException{
+       return this.buscarTitulo(name);
+    } 
+    
+    public static void main(String[] args){
         try{
                Registry registro = LocateRegistry.createRegistry(7778);
                registro.rebind("RemoteRMI", new ServerRMI());
-               System.out.println("SERVIDOR ACTIVO");           
+               System.out.println("SERVIDOR ACTIVO");
         }
         catch(RemoteException ex){
                 System.out.println(ex.getMessage());
         }
     }
 }
-
