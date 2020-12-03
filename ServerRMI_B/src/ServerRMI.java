@@ -21,13 +21,9 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 
-public class ServerRMI extends UnicastRemoteObject implements RMI{
+public class ServerRMI extends UnicastRemoteObject implements Middleware{
 
-    @Override
-    public String pedirLibro(String title) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    } // Hay que hacer varios rmi porque me pide iplementar todos los métodos abstractos
-     
+
        enum Tags{
            book,
            name,
@@ -81,6 +77,16 @@ public class ServerRMI extends UnicastRemoteObject implements RMI{
          return "Libro "+book.title;
     }
     
+        @Override
+    public String buscarAutor(String title) throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public String getAuthor(String title) throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+     
     public String getTitle(String name) throws RemoteException{
        return this.buscarTitulo(name);
     } 
@@ -88,7 +94,7 @@ public class ServerRMI extends UnicastRemoteObject implements RMI{
     public static void main(String[] args){
         try{
                Registry registro = LocateRegistry.createRegistry(7778);
-               registro.rebind("RemoteRMI", new ServerRMI());
+               registro.rebind("RemoteRMI_B", new ServerRMI());
                System.out.println("SERVIDOR ACTIVO");
         }
         catch(RemoteException ex){
