@@ -15,6 +15,8 @@ import java.rmi.RemoteException;
 import java.rmi.server.UnicastRemoteObject;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.ArrayList;
+import java.util.List;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -24,13 +26,7 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 
 
-public class ServerRMI extends UnicastRemoteObject implements RMI{
-
-    @Override
-    public String buscarTitulo(String title) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
-    
+public class ServerRMI extends UnicastRemoteObject implements Middleware{
        enum Tags{
            book,
            name,
@@ -71,11 +67,25 @@ public class ServerRMI extends UnicastRemoteObject implements RMI{
              return book;
     }
     
+    public  List<String> getBooksByAuthor(String author, String tag, NodeList nodeList){
+        List<String> books = new ArrayList<String>(); 
+        
+         for(int i=0;i<nodeList.getLength();i++){
+            Node node = nodeList.item(i);
+                 Element element = (Element) node;
+                 if (element.getElementsByTagName(tag).item(0).getTextContent().contains(author)){
+                    books.add(element.getElementsByTagName(Tags.name.toString()).item(0).getTextContent());
+                 }
+         }
+         
+         return books;
+    }
+    
     @Override 
     public String pedirLibro(String name) throws RemoteException{
         Book book = null;
          try{
-             NodeList nodeList = getTag(Tags.book.toString());         
+            NodeList nodeList = getTag(Tags.book.toString());         
             book = getBook(Tags.name.toString(),name,nodeList);          
          }
          catch(Exception ex){
@@ -84,14 +94,34 @@ public class ServerRMI extends UnicastRemoteObject implements RMI{
          return "Libro "+book.title;
     }
     
+    @Override
+    public List<String> pedirAutor(String author) throws RemoteException {
+        List<String> books = new ArrayList<String>();
+        try{
+            NodeList nodeList = getTag(Tags.book.toString());         
+            books = this.getBooksByAuthor(author, Tags.author.toString(), nodeList);
+        }
+        catch(Exception ex){
+           System.out.println(ex.getMessage());
+        }
+        return books;
+    }
+
+    @Override
     public String getTitle(String name) throws RemoteException{
        return this.pedirLibro(name);
     }
-     
+
+    @Override
+    public List<String> getAuthor(String title) throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+    
+    
     public static void main(String[] args) throws IOException{
         try{
                Registry registro = LocateRegistry.createRegistry(7778);
-               registro.rebind("RemoteRMI", new ServerRMI());
+               registro.rebind("RemoteRMI_A", new ServerRMI());
                System.out.println("SERVIDOR ACTIVO");           
         }
         catch(RemoteException ex){

@@ -20,7 +20,7 @@ public class ClientRMI {
     private void connectServer() {
         try{
             Registry registro = LocateRegistry.getRegistry("127.0.0.1",7778);
-            RMI interfaz =(RMI)registro.lookup("RemoteRMI"); // busca el obj remoto en el registro RMI de la maquina remota
+            Middleware interfaz =(Middleware)registro.lookup("RemoteRMI"); // busca el obj remoto en el registro RMI de la maquina remota
             int suma;
            // suma = interfaz.sumar(3,4);
            // System.out.println("LA SUMA ES:"+suma);
