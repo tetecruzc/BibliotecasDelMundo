@@ -25,6 +25,11 @@ import org.w3c.dom.NodeList;
 
 
 public class ServerRMI extends UnicastRemoteObject implements RMI{
+
+    @Override
+    public String buscarTitulo(String title) throws RemoteException {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
     
        enum Tags{
            book,
