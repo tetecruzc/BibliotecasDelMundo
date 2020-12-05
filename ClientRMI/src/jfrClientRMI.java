@@ -8,31 +8,87 @@
  *
  * @author Tete
  */
+import java.io.File;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.Level;
+import javax.xml.parsers.DocumentBuilder;
+import javax.xml.parsers.DocumentBuilderFactory;
+import org.w3c.dom.Document;
+import org.w3c.dom.Element;
+import org.w3c.dom.Node;
+import org.w3c.dom.NodeList;
 
 public class jfrClientRMI extends javax.swing.JFrame {
-    
+    List<Library> librariesList = null;
+    enum tags {name, ip, server, port, local, library};
     /**
      * Creates new form jfrClientRMI
      */
     public jfrClientRMI() {
-        
-        initComponents();
-        
-       List<String> clientNames = new ArrayList<String>();
-       clientNames.add("Local");
-       clientNames.add("Remote_A");
-
-       for(int i = 0; i< clientNames.size(); i++){
-          libraries.addItem(clientNames.get(i));
+       initComponents();
+       NodeList nodeList = this.getData("src/assets/LibrariesData.xml");
+       
+       this.getLibrariesNames(nodeList);
+       if(this.librariesList == null){
+         this.createLibraries(nodeList);
        }
     }
 
+    public void getLibrariesNames(NodeList nodeList){
+        String tag = tags.name.toString();
+        
+        for(int i=0;i<nodeList.getLength();i++){
+                 Node node = nodeList.item(i);
+                 Element element = (Element) node;
+                 libraries.addItem(element.getElementsByTagName(tag).item(0).getTextContent());
+             }
+    }
+    
+    public void createLibraries(NodeList nodeList){
+        this.librariesList =  new ArrayList<Library>();
+        for(int i=0;i<nodeList.getLength();i++){
+            Node node = nodeList.item(i);
+            Element element = (Element) node;
+            Library library = null;
+            
+            String name = element.getElementsByTagName(tags.name.toString()).item(0).getTextContent();
+            String ip = element.getElementsByTagName(tags.ip.toString()).item(0).getTextContent();
+            String server = element.getElementsByTagName(tags.server.toString()).item(0).getTextContent();
+            int  port = Integer.parseInt(element.getElementsByTagName(tags.port.toString()).item(0).getTextContent());
+
+            if (element.getElementsByTagName(tags.local.toString()).item(0).getTextContent().contains("true")){
+              library = new LocalLibrary(name, ip, port, server);
+            }else{
+              library = new RemoteLibrary(name, ip, port, server);
+            }
+                 
+            this.librariesList.add(library);  
+        }
+    }
+    
+    public NodeList getData(String url){
+        NodeList nodeList = null ;
+            try{
+             File file = new File(url);
+             DocumentBuilderFactory dbf = DocumentBuilderFactory.newInstance();
+             DocumentBuilder db = dbf.newDocumentBuilder();
+             Document document = db.parse(file);
+             document.getDocumentElement().normalize(); 
+             nodeList = document.getElementsByTagName(tags.library.toString());
+             return  nodeList;
+            }
+            catch(Exception ex){
+                 System.out.println(ex.getMessage());
+            }
+            return nodeList;
+    }
+    
+    
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -93,15 +149,9 @@ public class jfrClientRMI extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-       List<Client> clients =  new ArrayList<Client>();
+        List<Library> clients =  this.librariesList;
        
        String selectedLibrary = libraries.getSelectedItem().toString();
-       Client clientA = new ClientRMI_A();
-       Client clientB = new ClientRMI_B();
-       
-       clients.add(clientA);
-       clients.add(clientB);
-       
        for(int i = 0; i< clients.size(); i++){
            if (clients.get(i).name.contains(selectedLibrary)){
                LibraryBuilder builder = new LibraryBuilder(clients.get(i));

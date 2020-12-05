@@ -1,5 +1,4 @@
 
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -18,15 +17,14 @@ import java.util.logging.Logger;
  *
  * @author alley
  */
-public class ClientRMI_B extends Client {
-
-    public ClientRMI_B(){
+public class LocalLibrary extends Library{
+     public LocalLibrary(String name, String ip, int port, String serverName){
         super();
-        this.name = "Client B";
+        this.name = name;
         
         try{
-//            Registry registro = LocateRegistry.getRegistry("127.0.0.1", 7777);
-//            this.interfaz =(Middleware)registro.lookup("RemoteRMI_B");
+            Registry registro = LocateRegistry.getRegistry(ip, port);
+            this.interfaz =(Middleware)registro.lookup(serverName);
         }
         catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -37,22 +35,26 @@ public class ClientRMI_B extends Client {
     public String getBookByTitle(String title) {
         String book = null;
         try {
-           book =  this.interfaz.getTitle(title);
+            book = this.interfaz.pedirLibro(title);
         } catch (RemoteException ex) {
-            Logger.getLogger(ClientRMI_B.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(LocalLibrary.class.getName()).log(Level.SEVERE, null, ex);
         }
         
-        return book;
+        return book;   
     }
 
+    
     @Override
     public List<String> getBookByAuthor(String author) {
         List<String> books = new ArrayList<String>(); 
+        
         try {
-           books =  this.interfaz.getAuthor(author);
-        } catch (RemoteException ex) {
-            Logger.getLogger(ClientRMI_B.class.getName()).log(Level.SEVERE, null, ex);
+            books = this.interfaz.pedirAutor(author);
+        } 
+        catch (RemoteException ex) {
+            Logger.getLogger(LocalLibrary.class.getName()).log(Level.SEVERE, null, ex);
         }
         return books;
-    } 
+    }
+
 }

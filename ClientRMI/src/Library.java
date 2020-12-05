@@ -11,7 +11,8 @@ import java.util.List;
  *
  * @author alley
  */
-public abstract class Client {
+public abstract class Library
+{
     String name;
     Middleware interfaz;
 

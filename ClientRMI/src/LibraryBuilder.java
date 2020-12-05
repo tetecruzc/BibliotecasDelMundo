@@ -12,9 +12,9 @@ import java.util.List;
  * @author alley
  */
 public class LibraryBuilder {
-    Client client;
+    Library client;
     
-    public LibraryBuilder(Client client){
+    public LibraryBuilder(Library client){
         this.client = client;
     }
     
