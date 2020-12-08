@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+
+<libraries>
+    <library>
+        <name>Local</name>
+        <ip>127.0.0.1</ip>
+        <server>RemoteRMI_A</server>
+        <local>true</local>
+        <port>7778</port>
+    </library>
+    <library>
+        <name>Remote_B</name>
+        <ip>127.0.0.1</ip>
+        <server>RemoteRMI_B</server>
+        <local>false</local>
+        <port>7777</port>
+    </library>
+    <library>
+        <name>Remote_C</name>
+        <ip>127.0.0.1</ip>
+        <server>RemoteRMI_C</server>
+        <local>false</local>
+        <port>7779</port>
+    </library>
+</libraries>

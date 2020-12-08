@@ -27,4 +27,8 @@ and open the template in the editor.
             <name>Pride and Prejudice</name>
             <author>Jane Austen</author>
         </book> 
+        <book>
+            <name>Searching for Alaska</name>
+            <author>John Green</author>
+        </book> 
 </books>

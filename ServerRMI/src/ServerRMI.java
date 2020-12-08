@@ -59,11 +59,12 @@ public class ServerRMI extends UnicastRemoteObject implements Middleware{
              for(int i=0;i<nodeList.getLength();i++){
                  Node node = nodeList.item(i);
                  Element element = (Element) node;
-                 if (element.getElementsByTagName(tag).item(0).getTextContent().contains(name)){
+                  String elementLowerCase = element.getElementsByTagName(tag).item(0).getTextContent().toLowerCase();
+                 if (elementLowerCase.contains(name.toLowerCase())){
                      book.title = element.getElementsByTagName(tag).item(0).getTextContent();
                  }
              }
-             System.out.println("EL LIBRO "+book.title); 
+            // System.out.println("EL LIBRO "+book.title); 
              return book;
     }
     
@@ -73,8 +74,9 @@ public class ServerRMI extends UnicastRemoteObject implements Middleware{
          for(int i=0;i<nodeList.getLength();i++){
             Node node = nodeList.item(i);
                  Element element = (Element) node;
-                 if (element.getElementsByTagName(tag).item(0).getTextContent().contains(author)){
-                    books.add(element.getElementsByTagName(Tags.name.toString()).item(0).getTextContent());
+                 String elementLowerCase = element.getElementsByTagName(tag).item(0).getTextContent().toLowerCase();
+                 if (elementLowerCase.contains(author.toLowerCase())){
+                    books.add("Libro "+element.getElementsByTagName(Tags.name.toString()).item(0).getTextContent());
                  }
          }
          
