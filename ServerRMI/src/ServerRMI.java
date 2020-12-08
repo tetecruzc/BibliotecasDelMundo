@@ -54,7 +54,9 @@ public class ServerRMI extends UnicastRemoteObject implements Middleware{
             return nodeList;
     }
     
-    public Book getBook(String tag, String name, NodeList nodeList){
+    public synchronized Book getBook(String tag, String name, NodeList nodeList) throws InterruptedException{
+          System.out.println("Buscando libro por título");
+          Thread.sleep(10000);
           Book book = new Book();
              for(int i=0;i<nodeList.getLength();i++){
                  Node node = nodeList.item(i);
@@ -68,9 +70,9 @@ public class ServerRMI extends UnicastRemoteObject implements Middleware{
              return book;
     }
     
-    public  List<String> getBooksByAuthor(String author, String tag, NodeList nodeList){
+    public synchronized List<String> getBooksByAuthor(String author, String tag, NodeList nodeList){
+        System.out.println("Buscando libro por autor");
         List<String> books = new ArrayList<String>(); 
-        
          for(int i=0;i<nodeList.getLength();i++){
             Node node = nodeList.item(i);
                  Element element = (Element) node;
