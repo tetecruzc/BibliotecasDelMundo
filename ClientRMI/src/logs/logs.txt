@@ -1,0 +1,15 @@
+[15:57:05] | 559631 | Petición enviada a la Biblioteca A: Pedir libro a
+[16:36:39] | 356594 | Petición enviada a la Biblioteca A: Pedir libro a
+[17:03:27] | 470810 | Petición enviada a la Biblioteca A: Pedir libro a
+[17:03:46] | 211295 | Petición enviada a la Biblioteca A: Pedir autor a
+[17:07:04] | 893952 | Petición enviada a la Biblioteca A: Pedir libro Busca un libro...
+[17:07:09] | 780659 | Petición enviada a la Biblioteca A: Pedir libro a
+[17:07:17] | 534565 | Petición enviada a la Biblioteca A: Pedir autor a
+[17:08:16] | 412467 | Petición enviada a la Biblioteca A: Pedir autor a
+[17:15:10] | 310789 | Petición enviada a la Biblioteca A: Pedir libro a
+[17:15:26] | 250556 | Petición enviada a la Biblioteca A: Pedir libro a
+[17:16:30] | 424159 | Petición enviada a la Biblioteca A: Pedir autor a
+[17:18:18] | 341921 | Petición enviada a la Biblioteca A: Pedir libro a
+[17:22:17] | 16162 | Petición enviada a la Biblioteca A: Pedir libro a
+[17:23:22] | 942170 | Petición enviada a la Biblioteca A: Pedir libro a
+[17:23:42] | 960763 | Petición enviada a la Biblioteca A: Pedir autor a

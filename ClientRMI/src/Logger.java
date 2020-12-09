@@ -39,7 +39,7 @@ public class Logger {
      
      public void saveRequestMsg(int transactionId, String library, String content) throws IOException{
         String date = this.calculateDate();
-        System.out.print("llamando save request");
+      //  System.out.print("llamando save request");
         
         String msg =  "[" + date + "]" + " | "+ transactionId + " | "+ "Petición enviada a la "+ library + ": "+ content;
         this.saveRequest(msg);
@@ -48,7 +48,7 @@ public class Logger {
      private void saveRequest(String msg) throws IOException{
          if (!this.file.exists()){
              this.createFile();
-             System.out.print("crenado fiel");
+             System.out.print("creando file");
          }  
               FileWriter fw = new FileWriter(this.file, true);
               PrintWriter pr = new PrintWriter(fw);
