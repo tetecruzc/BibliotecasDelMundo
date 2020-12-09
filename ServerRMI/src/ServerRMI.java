@@ -17,6 +17,7 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
@@ -27,14 +28,16 @@ import org.w3c.dom.NodeList;
 
 
 public class ServerRMI extends UnicastRemoteObject implements Middleware{
-       enum Tags{
+    enum Tags{
            book,
            name,
            author,
        }
+    Logger logger;
     
     public ServerRMI() throws RemoteException{
         super();
+        this.logger = new Logger();
     }
 
     public NodeList getTag(String tag) {
@@ -56,7 +59,6 @@ public class ServerRMI extends UnicastRemoteObject implements Middleware{
     
     public synchronized Book getBook(String tag, String name, NodeList nodeList) throws InterruptedException{
           System.out.println("Buscando libro por título");
-          Thread.sleep(10000);
           Book book = new Book();
              for(int i=0;i<nodeList.getLength();i++){
                  Node node = nodeList.item(i);
@@ -66,12 +68,10 @@ public class ServerRMI extends UnicastRemoteObject implements Middleware{
                      book.title = element.getElementsByTagName(tag).item(0).getTextContent();
                  }
              }
-            // System.out.println("EL LIBRO "+book.title); 
              return book;
     }
     
     public synchronized List<String> getBooksByAuthor(String author, String tag, NodeList nodeList){
-        System.out.println("Buscando libro por autor");
         List<String> books = new ArrayList<String>(); 
          for(int i=0;i<nodeList.getLength();i++){
             Node node = nodeList.item(i);
@@ -81,29 +81,49 @@ public class ServerRMI extends UnicastRemoteObject implements Middleware{
                     books.add("Libro "+element.getElementsByTagName(Tags.name.toString()).item(0).getTextContent());
                  }
          }
-         
+           
          return books;
     }
+   
+
     
     @Override 
-    public String pedirLibro(String name) throws RemoteException{
+    public String pedirLibro(String name, String library, int transactionId) throws RemoteException{
         Book book = null;
+
          try{
+            this.logger.saveRequestMsg(transactionId, library, "Pedir libro "+ name);
             NodeList nodeList = getTag(Tags.book.toString());         
-            book = getBook(Tags.name.toString(),name,nodeList);          
+            book = getBook(Tags.name.toString(),name ,nodeList); 
+            this.logger.saveResponseMsg(transactionId,library, book.title);
+         }
+         catch(IOException ex){
+             System.out.println(ex.getMessage());
          }
          catch(Exception ex){
             System.out.println(ex.getMessage());
-         }   
+         }
+         
          return "Libro "+book.title;
     }
     
     @Override
-    public List<String> pedirAutor(String author) throws RemoteException {
+    public List<String> pedirAutor(String author, String library, int transactionId) throws RemoteException {
         List<String> books = new ArrayList<String>();
         try{
+            this.logger.saveRequestMsg(transactionId, library, "Pedir autor "+ author);
             NodeList nodeList = getTag(Tags.book.toString());         
             books = this.getBooksByAuthor(author, Tags.author.toString(), nodeList);
+            
+            String allBooks = "";
+            for(int i = 0; i< books.size(); i++){
+                allBooks= allBooks + " - " + books.get(i);
+            }   
+            
+           this.logger.saveResponseMsg(transactionId,library,allBooks); 
+        }
+        catch(IOException ex){
+             System.out.println(ex.getMessage());
         }
         catch(Exception ex){
            System.out.println(ex.getMessage());
@@ -112,16 +132,31 @@ public class ServerRMI extends UnicastRemoteObject implements Middleware{
     }
 
     @Override
-    public String getTitle(String name) throws RemoteException{
-       return this.pedirLibro(name);
+    public String getTitle(String name, String alias, int transactionId) throws RemoteException{
+        try {
+          this.logger.saveRequestMsg(transactionId, alias, "Get Title "+ name);
+        } catch (IOException ex) {
+            java.util.logging.Logger.getLogger(ServerRMI.class.getName()).log(Level.SEVERE, null, ex);
+        }
+       return this.pedirLibro(name, alias, transactionId);
     }
 
     @Override
-    public List<String> getAuthor(String title) throws RemoteException {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<String> getAuthor(String author, String library, int transactionId) throws RemoteException {
+        List<String> books = new ArrayList<String>();
+        try{
+            this.logger.saveRequestMsg(transactionId, library, "Get Author "+ author);
+            NodeList nodeList = getTag(Tags.book.toString());         
+            books = this.getBooksByAuthor(author, Tags.author.toString(), nodeList);
+
+        }
+        catch(Exception ex){
+           System.out.println(ex.getMessage());
+        }
+        return books;
     }
     
-    
+
     public static void main(String[] args) throws IOException{
         try{
                Registry registro = LocateRegistry.createRegistry(7778);

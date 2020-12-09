@@ -8,6 +8,7 @@
  *
  * @author Tete
  */
+import java.io.IOException;
 import java.util.List;
 
 
@@ -15,7 +16,17 @@ public abstract class Library
 {
     String name;
     Middleware interfaz;
-
-    public abstract String getBookByTitle(String title);
-    public abstract List<String> getBookByAuthor(String author);
+    String alias;
+    Logger logger;
+    
+    public Library(){
+        this.logger = new Logger();
+    }
+    
+    public abstract String getBookByTitle(String title,  int transactionId);
+    public abstract List<String> getBookByAuthor(String author, int transactionId);
+    
+    public void saveLog(int transactionId, String content) throws IOException{
+        this.logger.saveRequestMsg(transactionId, this.alias, content);
+    }
 }

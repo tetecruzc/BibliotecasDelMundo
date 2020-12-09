@@ -11,8 +11,8 @@ import java.util.List;
  * @author Tete
  */
 public interface ILibrary {
-    public String getLocalBookByTitle(String title);
-    public List<String> getLocalBookByAuthor(String author);
-    public String getRemoteBookByTitle(String title);
-    public String getRemoteBookByAuthor(String author);    
+    public String getLocalBookByTitle(String title, int transactionId);
+    public List<String> getLocalBookByAuthor(String author, int transactionId);
+    public String getRemoteBookByTitle(String title, int transactionId);
+    public String getRemoteBookByAuthor(String author, int transactionId);
 }

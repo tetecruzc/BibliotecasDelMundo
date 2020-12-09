@@ -1,0 +1,2 @@
+[22:40:21] -198758| Petición desde Biblioteca A recibida: Pedir libro harry potter
+[22:42:22] -172126| Petición desde Biblioteca A recibida: Pedir libro harry potter

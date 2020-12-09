@@ -1,4 +1,5 @@
 
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -19,9 +20,10 @@ import java.util.logging.Logger;
  */
 public class RemoteLibrary extends Library{
 
-     public RemoteLibrary(String name, String ip, int port, String serverName){
+     public RemoteLibrary(String name, String ip, int port, String serverName, String alias){
         super();
         this.name = name;
+        this.alias = alias;
         
         try{
             //Comentado mientras probamos remoto
@@ -35,25 +37,32 @@ public class RemoteLibrary extends Library{
 
 
     @Override
-    public String getBookByTitle(String title) {
+    public String getBookByTitle(String title, int transactionId) {
         String book = null;
+        
         try {
-           book =  this.interfaz.getTitle(title);
+           book =  this.interfaz.getTitle(title, this.alias, transactionId);
+           this.saveLog(transactionId, "Get title"+ title);
         } catch (RemoteException ex) {
             Logger.getLogger(RemoteLibrary.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (IOException ex) {
+             Logger.getLogger(RemoteLibrary.class.getName()).log(Level.SEVERE, null, ex);
         }
         
         return book;
     }
 
     @Override
-    public List<String> getBookByAuthor(String author) {
+    public List<String> getBookByAuthor(String author,  int transactionId) {
         List<String> books = new ArrayList<String>(); 
         try {
-           books =  this.interfaz.getAuthor(author);
+           books =  this.interfaz.getAuthor(author, this.alias, transactionId);
+           this.saveLog(transactionId, "Get author"+ author);
         } catch (RemoteException ex) {
             Logger.getLogger(RemoteLibrary.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (IOException ex) {
+             Logger.getLogger(RemoteLibrary.class.getName()).log(Level.SEVERE, null, ex);
+         }
         return books;
     } 
 } 

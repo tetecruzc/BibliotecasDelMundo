@@ -13,16 +13,19 @@ import java.util.List;
  */
 public class LibraryBuilder {
     Library client;
-    
+    Logger logger;
     public LibraryBuilder(Library client){
         this.client = client;
+        
     }
     
-    public String getBookByTitle(String title){
-        return this.client.getBookByTitle(title);
+    public String getBookByTitle(String title, int transactionId){
+        return this.client.getBookByTitle(title, transactionId);
     }
     
-    public List<String> getBookByAuthor(String author){
-        return this.client.getBookByAuthor(author);
+    public List<String> getBookByAuthor(String author, int transactionId){
+        return this.client.getBookByAuthor(author,transactionId);
     }   
+    
+
 }

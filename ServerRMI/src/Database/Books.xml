@@ -16,6 +16,10 @@ and open the template in the editor.
             <author>Stephenie Meyer</author>
         </book>
         <book>
+            <name>The host ii</name>
+            <author>Stephenie Meyer</author>
+        </book>
+        <book>
             <name>The Shadowhunters Chronicles</name>
             <author>Cassandra Clare</author>
         </book>

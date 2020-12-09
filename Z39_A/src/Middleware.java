@@ -14,8 +14,8 @@ import java.util.List;
  * @author alley
  */    
 public interface Middleware extends Remote{
-    public String pedirLibro(String title) throws RemoteException; 
-    public List<String> pedirAutor(String title) throws RemoteException; 
-    public String getTitle(String title) throws RemoteException; 
-    public List<String> getAuthor(String title) throws RemoteException; 
+    public String pedirLibro(String title,String alias, int transactionId) throws RemoteException; 
+    public List<String> pedirAutor(String title,String alias, int transactionId) throws RemoteException; 
+    public String getTitle(String title, String alias, int transactionId) throws RemoteException; 
+    public List<String> getAuthor(String title, String alias, int transactionId) throws RemoteException; 
 }

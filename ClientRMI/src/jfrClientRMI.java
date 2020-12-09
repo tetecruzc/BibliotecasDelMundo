@@ -29,7 +29,7 @@ import org.w3c.dom.NodeList;
 public class jfrClientRMI extends javax.swing.JFrame {
 
     List<Library> librariesList = null;
-    enum tags {name, ip, server, port, local, library};
+    enum tags {name, ip, server, port, local, alias,  library};
     Boolean searchByBook = true;
     /**
      * 
@@ -46,7 +46,7 @@ public class jfrClientRMI extends javax.swing.JFrame {
         jButtonSearchByBook.setBorder(new LineBorder(new java.awt.Color(75,94,213), 3, true));
     
     }
-public void getLibrariesNames(NodeList nodeList){
+    public void getLibrariesNames(NodeList nodeList){
         String tag = tags.name.toString();
         
         for(int i=0;i<nodeList.getLength();i++){
@@ -56,6 +56,10 @@ public void getLibrariesNames(NodeList nodeList){
              }
     }
     
+    public int generateTransactionId(){
+        return (int) (Math.random() * 999999) + 1;
+    }
+      
     public void createLibraries(NodeList nodeList){
         this.librariesList =  new ArrayList<Library>();
         for(int i=0;i<nodeList.getLength();i++){
@@ -66,12 +70,14 @@ public void getLibrariesNames(NodeList nodeList){
             String name = element.getElementsByTagName(tags.name.toString()).item(0).getTextContent();
             String ip = element.getElementsByTagName(tags.ip.toString()).item(0).getTextContent();
             String server = element.getElementsByTagName(tags.server.toString()).item(0).getTextContent();
+            String alias = element.getElementsByTagName(tags.alias.toString()).item(0).getTextContent();
+            
             int  port = Integer.parseInt(element.getElementsByTagName(tags.port.toString()).item(0).getTextContent());
 
             if (element.getElementsByTagName(tags.local.toString()).item(0).getTextContent().contains("true")){
-              library = new LocalLibrary(name, ip, port, server);
+              library = new LocalLibrary(name, ip, port, server, alias);
             }else{
-              library = new RemoteLibrary(name, ip, port, server);
+              library = new RemoteLibrary(name, ip, port, server, alias);
             }
                  
             this.librariesList.add(library);  
@@ -394,7 +400,7 @@ public void getLibrariesNames(NodeList nodeList){
     private void jLabCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabCloseMouseClicked
         // TODO add your handling code here:
         int dialog = JOptionPane.YES_NO_OPTION;
-        int result = JOptionPane.showConfirmDialog(null, "Esta seguro que desea salir?","Exit",dialog);
+        int result = JOptionPane.showConfirmDialog(null, "¿Está seguro que desea salir?","Exit",dialog);
         if (result ==0){
             System.exit(0);
         }
@@ -452,13 +458,14 @@ public void getLibrariesNames(NodeList nodeList){
             for(int i = 0; i< clients.size(); i++){
                 if (clients.get(i).name.contains(selectedLibrary)){
                     LibraryBuilder builder = new LibraryBuilder(clients.get(i));
-                   
+                    int transactionId = this.generateTransactionId();
+                    
                     if (this.searchByBook == true){
-                        String currentBook = builder.getBookByTitle(bookSearch);
+                        String currentBook = builder.getBookByTitle(bookSearch, transactionId);
                         book.add(currentBook);
                     }
                     else{
-                        book = builder.getBookByAuthor(bookSearch);
+                        book = builder.getBookByAuthor(bookSearch, transactionId);
                     }                   
                 }
             } 

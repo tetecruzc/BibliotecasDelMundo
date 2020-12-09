@@ -1,3 +1,4 @@
+import java.io.IOException;
 import java.rmi.RemoteException;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
@@ -17,9 +18,10 @@ import java.util.logging.Logger;
  * @author alley
  */
 public class LocalLibrary extends Library{
-     public LocalLibrary(String name, String ip, int port, String serverName){
+     public LocalLibrary(String name, String ip, int port, String serverName, String alias){
         super();
         this.name = name;
+        this.alias = alias;
         
         try{
             Registry registro = LocateRegistry.getRegistry(ip, port);
@@ -31,28 +33,34 @@ public class LocalLibrary extends Library{
     }
 
     @Override
-    public String getBookByTitle(String title) {
+    public String getBookByTitle(String title, int transactionId){
         String book = null;
         try {
-            book = this.interfaz.pedirLibro(title);
+            book = this.interfaz.pedirLibro(title, this.alias, transactionId);
+            this.saveLog(transactionId, "Pedir libro "+ title);
         } catch (RemoteException ex) {
             Logger.getLogger(LocalLibrary.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (IOException ex) {
+             Logger.getLogger(LocalLibrary.class.getName()).log(Level.SEVERE, null, ex);
+         }
         
         return book;   
     }
 
     
     @Override
-    public List<String> getBookByAuthor(String author) {
+    public List<String> getBookByAuthor(String author, int transactionId){
         List<String> books = new ArrayList<String>(); 
         
         try {
-            books = this.interfaz.pedirAutor(author);
+            books = this.interfaz.pedirAutor(author, this.alias, transactionId);
+            this.saveLog(transactionId, "Pedir autor "+ author);
         } 
         catch (RemoteException ex) {
             Logger.getLogger(LocalLibrary.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        } catch (IOException ex) {
+             Logger.getLogger(LocalLibrary.class.getName()).log(Level.SEVERE, null, ex);
+         }
         return books;
     }
 
