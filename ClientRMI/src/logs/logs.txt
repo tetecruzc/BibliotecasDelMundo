@@ -1,15 +1,12 @@
-[15:57:05] | 559631 | Petición enviada a la Biblioteca A: Pedir libro a
-[16:36:39] | 356594 | Petición enviada a la Biblioteca A: Pedir libro a
-[17:03:27] | 470810 | Petición enviada a la Biblioteca A: Pedir libro a
-[17:03:46] | 211295 | Petición enviada a la Biblioteca A: Pedir autor a
-[17:07:04] | 893952 | Petición enviada a la Biblioteca A: Pedir libro Busca un libro...
-[17:07:09] | 780659 | Petición enviada a la Biblioteca A: Pedir libro a
-[17:07:17] | 534565 | Petición enviada a la Biblioteca A: Pedir autor a
-[17:08:16] | 412467 | Petición enviada a la Biblioteca A: Pedir autor a
-[17:15:10] | 310789 | Petición enviada a la Biblioteca A: Pedir libro a
-[17:15:26] | 250556 | Petición enviada a la Biblioteca A: Pedir libro a
-[17:16:30] | 424159 | Petición enviada a la Biblioteca A: Pedir autor a
-[17:18:18] | 341921 | Petición enviada a la Biblioteca A: Pedir libro a
-[17:22:17] | 16162 | Petición enviada a la Biblioteca A: Pedir libro a
-[17:23:22] | 942170 | Petición enviada a la Biblioteca A: Pedir libro a
-[17:23:42] | 960763 | Petición enviada a la Biblioteca A: Pedir autor a
+[20:07:36] | 218705 | Petición enviada a la Biblioteca A: Pedir libro ha
+[20:09:22] | 467410 | Petición enviada a la Biblioteca A: Get titleha
+[21:30:06] | 181111 | Petición enviada a la Biblioteca A: Get titleharry p
+[21:30:25] | 314750 | Petición enviada a la Biblioteca A: Get titlehola alex
+[21:30:45] | 736052 | Petición enviada a la Biblioteca A: Get titlea
+[21:31:10] | 993037 | Petición enviada a la Biblioteca A: Get titlee
+[21:32:31] | 641705 | Petición enviada a la Biblioteca A: Get titlehola bb
+[21:42:46] | 360458 | Petición enviada a la Biblioteca A: Get titleharry p
+[23:39:42] | 266715 | Petición enviada a la Biblioteca A: Pedir libro Busca un libro...
+[23:39:50] | 541387 | Petición enviada a la Biblioteca A: Pedir libro a
+[23:46:03] | 196820 | Petición enviada a la Biblioteca A: Pedir autor a
+[23:54:55] | 989119 | Petición enviada a la Biblioteca A: Pedir autor a

@@ -13,6 +13,7 @@ import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import org.w3c.dom.Document;
@@ -30,6 +31,7 @@ import org.w3c.dom.NodeList;
  * @author Tete
  */
 public class jfrClientRMI extends javax.swing.JFrame {
+    DefaultTableModel model = new DefaultTableModel();
 
     List<Library> librariesList = null;
     enum tags {name, ip, server, port, local, alias,  library};
@@ -40,19 +42,43 @@ public class jfrClientRMI extends javax.swing.JFrame {
      */
     public jfrClientRMI() {
         initComponents();
+         NodeList nodeList = this.getData("src/assets/LibrariesData.xml");
+        if(this.librariesList == null){
+            this.createLibraries(nodeList);
+        }
+        this.getLibrariesNames(nodeList);
+        CreatingTable();
         this.setLocationRelativeTo(null);
-        NodeList nodeList = this.getData("src/assets/LibrariesData.xml");
-       this.getLibrariesNames(nodeList);
-       if(this.librariesList == null){
-         this.createLibraries(nodeList);
-       }
+
         jButtonSearchByBook.setBorder(new LineBorder(new java.awt.Color(75,94,213), 3, true));
         jTable1.getTableHeader().setFont(new Font("Gujarati Sangam MN", Font.BOLD,12));
         jTable1.getTableHeader().setOpaque(false);
         jTable1.getTableHeader().setBackground(new Color(255,255,255));
-        jTable1.getTableHeader().setForeground(new Color(255,255,255));
+       // jTable1.getTableHeader().setForeground(new Color(255,255,255));
         jTable1.setRowHeight(25);
     }
+
+    public void CreatingTable(){
+        ArrayList<Object>columnName= new ArrayList<Object>();
+        columnName.add("Título del libro");
+        columnName.add("Biblioteca");
+        for (Object column: columnName){
+            model.addColumn(column);
+        }
+        this.jTable1.setModel(model);
+        
+    }
+
+    public void AddToTable(List<String> book, String selectedLibrary){
+        ArrayList<Object[]>data= new ArrayList<Object[]>();
+                   
+        for (int i=0;i<book.size();i++){
+            Object[] info = new Object[]{book.get(i),selectedLibrary};
+            model.addRow(info);
+        }
+        jTable1.setModel(model);  
+    }
+
     public void getLibrariesNames(NodeList nodeList){
         String tag = tags.name.toString();
         
@@ -408,11 +434,14 @@ public class jfrClientRMI extends javax.swing.JFrame {
         jPanelBody.setLayout(jPanelBodyLayout);
         jPanelBodyLayout.setHorizontalGroup(
             jPanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanelResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBodyLayout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanelSearch, javax.swing.GroupLayout.PREFERRED_SIZE, 582, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31))
+            .addGroup(jPanelBodyLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jPanelResults, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(19, 19, 19))
         );
         jPanelBodyLayout.setVerticalGroup(
             jPanelBodyLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -548,6 +577,7 @@ public class jfrClientRMI extends javax.swing.JFrame {
 
     private void jButtonSearchesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchesActionPerformed
         // TODO add your handling code here:
+       
         List<Library> clients =  this.librariesList;
        int dialog = JOptionPane.INFORMATION_MESSAGE;
        String selectedLibrary = jComboBoxLibraries.getSelectedItem().toString();
@@ -560,8 +590,7 @@ public class jfrClientRMI extends javax.swing.JFrame {
             for(int i = 0; i< clients.size(); i++){
                 if (clients.get(i).name.contains(selectedLibrary)){
                     LibraryBuilder builder = new LibraryBuilder(clients.get(i));
-                    int transactionId = this.generateTransactionId();
-                    
+                    int transactionId = this.generateTransactionId(); 
                     if (this.searchByBook == true){
                         String currentBook = builder.getBookByTitle(bookSearch, transactionId);
                         book.add(currentBook);
@@ -573,20 +602,14 @@ public class jfrClientRMI extends javax.swing.JFrame {
             } 
             if (book.isEmpty() || book.get(0).contains("null")){
                 JOptionPane.showMessageDialog(null, "No se han encontrado resultados");  
-            }else{
-                for (int i=0;i<book.size(); i++){
-                   jLabelTitleResult.setText(book.get(i)+"\n");
-                }              
-                jLabelLibraryResult.setText(selectedLibrary);
-                JOptionPane.showMessageDialog(null,book);
+            }else{              
+                 AddToTable(book,selectedLibrary);
             }
        }  
     }//GEN-LAST:event_jButtonSearchesActionPerformed
 
     private void jButtonSearchesMouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonSearchesMouseMoved
-        // TODO add your handling code here:
-          
-
+        // TODO add your handling code here:         
     }//GEN-LAST:event_jButtonSearchesMouseMoved
 
     private void jTextFieldSearchesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTextFieldSearchesMouseClicked

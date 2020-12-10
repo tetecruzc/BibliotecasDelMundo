@@ -113,13 +113,11 @@ public class ServerRMI extends UnicastRemoteObject implements Middleware{
         try{
             this.logger.saveRequestMsg(transactionId, library, "Pedir autor "+ author);
             NodeList nodeList = getTag(Tags.book.toString());         
-            books = this.getBooksByAuthor(author, Tags.author.toString(), nodeList);
-            
+            books = this.getBooksByAuthor(author, Tags.author.toString(), nodeList);            
             String allBooks = "";
             for(int i = 0; i< books.size(); i++){
                 allBooks= allBooks + " - " + books.get(i);
-            }   
-            
+            }           
            this.logger.saveResponseMsg(transactionId,library,allBooks); 
         }
         catch(IOException ex){
@@ -159,6 +157,7 @@ public class ServerRMI extends UnicastRemoteObject implements Middleware{
 
     public static void main(String[] args) throws IOException{
         try{
+               java.lang.System.setProperty("java.rmi.server.hostname", "10.2.126.75");
                Registry registro = LocateRegistry.createRegistry(7778);
                registro.rebind("RemoteRMI_A", new ServerRMI());
                System.out.println("SERVIDOR ACTIVO");           

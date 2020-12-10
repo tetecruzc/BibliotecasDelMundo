@@ -27,8 +27,8 @@ public class RemoteLibrary extends Library{
         
         try{
             //Comentado mientras probamos remoto
-//           Registry registro = LocateRegistry.getRegistry(ip, port);
-//           this.interfaz =(Middleware)registro.lookup(serverName);
+           Registry registro = LocateRegistry.getRegistry(ip, port);
+           this.interfaz =(Middleware)registro.lookup(serverName);
         }
         catch(Exception ex){
             System.out.println(ex.getMessage());
@@ -39,7 +39,6 @@ public class RemoteLibrary extends Library{
     @Override
     public String getBookByTitle(String title, int transactionId) {
         String book = null;
-        
         try {
            book =  this.interfaz.getTitle(title, this.alias, transactionId);
            this.saveLog(transactionId, "Get title"+ title);

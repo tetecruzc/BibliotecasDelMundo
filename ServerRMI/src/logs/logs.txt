@@ -1,36 +1,49 @@
-[15:52:35] | 137313 | Petición recibida desde Biblioteca A: Pedir libro a
-[15:52:35] | 137313 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
-[15:54:02] | 239675 | Petición recibida desde Biblioteca A: Pedir libro Busca un libro...a
-[15:54:02] | 239675 | Respuesta enviada al cliente de la Biblioteca A: null
-[15:55:03] | 425218 | Petición recibida desde Biblioteca A: Pedir libro a
-[15:55:03] | 425218 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
-[15:57:05] | 559631 | Petición recibida desde Biblioteca A: Pedir libro a
-[15:57:05] | 559631 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
-[16:36:39] | 356594 | Petición recibida desde Biblioteca A: Pedir libro a
-[16:36:39] | 356594 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
-[17:03:27] | 470810 | Petición recibida desde Biblioteca A: Pedir libro a
-[17:03:27] | 470810 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
-[17:03:46] | 211295 | Petición recibida desde Biblioteca A: Pedir autor a
-[17:03:46] | 211295 | Respuesta enviada al cliente de la Biblioteca A:  - Libro The Shadowhunters Chronicles - Libro Pride and Prejudice
-[17:07:04] | 893952 | Petición recibida desde Biblioteca A: Pedir libro Busca un libro...
-[17:07:04] | 893952 | Respuesta enviada al cliente de la Biblioteca A: null
-[17:07:09] | 780659 | Petición recibida desde Biblioteca A: Pedir libro a
-[17:07:09] | 780659 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
-[17:07:17] | 534565 | Petición recibida desde Biblioteca A: Pedir autor a
-[17:07:17] | 534565 | Respuesta enviada al cliente de la Biblioteca A:  - Libro The Shadowhunters Chronicles - Libro Pride and Prejudice
-[17:08:16] | 412467 | Petición recibida desde Biblioteca A: Pedir autor a
-[17:08:16] | 412467 | Respuesta enviada al cliente de la Biblioteca A:  - Libro The Shadowhunters Chronicles - Libro Pride and Prejudice
-[17:15:10] | 310789 | Petición recibida desde Biblioteca A: Pedir libro a
-[17:15:10] | 310789 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
-[17:15:26] | 250556 | Petición recibida desde Biblioteca A: Pedir libro a
-[17:15:26] | 250556 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
-[17:16:30] | 424159 | Petición recibida desde Biblioteca A: Pedir autor a
-[17:16:30] | 424159 | Respuesta enviada al cliente de la Biblioteca A:  - Libro The Shadowhunters Chronicles - Libro Pride and Prejudice
-[17:18:18] | 341921 | Petición recibida desde Biblioteca A: Pedir libro a
-[17:18:18] | 341921 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
-[17:22:17] | 16162 | Petición recibida desde Biblioteca A: Pedir libro a
-[17:22:17] | 16162 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
-[17:23:22] | 942170 | Petición recibida desde Biblioteca A: Pedir libro a
-[17:23:22] | 942170 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
-[17:23:42] | 960763 | Petición recibida desde Biblioteca A: Pedir autor a
-[17:23:42] | 960763 | Respuesta enviada al cliente de la Biblioteca A:  - Libro The Shadowhunters Chronicles - Libro Pride and Prejudice
+[20:04:16] | 688874 | Petición recibida desde Biblioteca A: Pedir libro a
+[20:04:16] | 688874 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
+[20:04:45] | 879115 | Petición recibida desde Biblioteca A: Pedir libro a
+[20:04:45] | 879115 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
+[20:07:36] | 218705 | Petición recibida desde Biblioteca A: Pedir libro ha
+[20:07:36] | 218705 | Respuesta enviada al cliente de la Biblioteca A: The Shadowhunters Chronicles
+[20:09:22] | 467410 | Petición recibida desde Biblioteca A: Get Title ha
+[20:09:22] | 467410 | Petición recibida desde Biblioteca A: Pedir libro ha
+[20:09:22] | 467410 | Respuesta enviada al cliente de la Biblioteca A: The Shadowhunters Chronicles
+[20:41:40] | 968673 | Petición recibida desde Biblioteca A: Get Title Busca un libro...
+[20:41:40] | 968673 | Petición recibida desde Biblioteca A: Pedir libro Busca un libro...
+[20:41:40] | 968673 | Respuesta enviada al cliente de la Biblioteca A: null
+[20:41:54] | 633472 | Petición recibida desde Biblioteca A: Get Title harry potter
+[20:41:54] | 633472 | Petición recibida desde Biblioteca A: Pedir libro harry potter
+[20:41:54] | 633472 | Respuesta enviada al cliente de la Biblioteca A: Harry Potter
+[20:42:10] | 671978 | Petición recibida desde Biblioteca A: Get Title pedro
+[20:42:10] | 671978 | Petición recibida desde Biblioteca A: Pedir libro pedro
+[20:42:10] | 671978 | Respuesta enviada al cliente de la Biblioteca A: null
+[20:42:45] | 490506 | Petición recibida desde Biblioteca A: Get Author Stephenie Meyer<
+[21:09:36] | 709070 | Petición recibida desde Biblioteca C: Get Title harr
+[21:09:36] | 709070 | Petición recibida desde Biblioteca C: Pedir libro harr
+[21:09:36] | 709070 | Respuesta enviada al cliente de la Biblioteca C: Harry Potter
+[21:39:57] | 54403 | Petición recibida desde Biblioteca A: Get Author Busca un libro...
+[21:40:26] | 508041 | Petición recibida desde Biblioteca A: Get Title the
+[21:40:26] | 508041 | Petición recibida desde Biblioteca A: Pedir libro the
+[21:40:26] | 508041 | Respuesta enviada al cliente de la Biblioteca A: The Fault in Our Stars
+[21:45:19] | 641089 | Petición recibida desde Biblioteca A: Get Title pepe
+[21:45:19] | 641089 | Petición recibida desde Biblioteca A: Pedir libro pepe
+[21:45:19] | 641089 | Respuesta enviada al cliente de la Biblioteca A: null
+[21:49:14] | 534764 | Petición recibida desde Biblioteca A: Get Title epale
+[21:49:14] | 534764 | Petición recibida desde Biblioteca A: Pedir libro epale
+[21:49:14] | 534764 | Respuesta enviada al cliente de la Biblioteca A: null
+[21:56:31] | 615376 | Petición recibida desde Biblioteca A: Get Title epale
+[21:56:31] | 615376 | Petición recibida desde Biblioteca A: Pedir libro epale
+[21:56:31] | 615376 | Respuesta enviada al cliente de la Biblioteca A: null
+[21:56:41] | 500345 | Petición recibida desde Biblioteca A: Get Title Busca un libro...
+[21:56:41] | 500345 | Petición recibida desde Biblioteca A: Pedir libro Busca un libro...
+[21:56:41] | 500345 | Respuesta enviada al cliente de la Biblioteca A: null
+[21:56:49] | 855922 | Petición recibida desde Biblioteca A: Get Title Harry Potter
+[21:56:49] | 855922 | Petición recibida desde Biblioteca A: Pedir libro Harry Potter
+[21:56:49] | 855922 | Respuesta enviada al cliente de la Biblioteca A: Harry Potter
+[23:39:42] | 266715 | Petición recibida desde Biblioteca A: Pedir libro Busca un libro...
+[23:39:42] | 266715 | Respuesta enviada al cliente de la Biblioteca A: null
+[23:39:49] | 541387 | Petición recibida desde Biblioteca A: Pedir libro a
+[23:39:49] | 541387 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
+[23:46:02] | 196820 | Petición recibida desde Biblioteca A: Pedir autor a
+[23:46:02] | 196820 | Respuesta enviada al cliente de la Biblioteca A:  - Libro The Shadowhunters Chronicles - Libro Pride and Prejudice
+[23:54:55] | 989119 | Petición recibida desde Biblioteca A: Pedir autor a
+[23:54:55] | 989119 | Respuesta enviada al cliente de la Biblioteca A:  - Libro The Shadowhunters Chronicles - Libro Pride and Prejudice
