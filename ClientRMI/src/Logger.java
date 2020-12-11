@@ -31,20 +31,23 @@ public class Logger {
          this.file.createNewFile();
      }
      
+     /* Calcula la fecha actual del servidor */
      private String calculateDate(){
         DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
         Date date = new Date();
         return dateFormat.format(date);
      }
      
+     /* Registra la petición realizada por el cliente. */
      public void saveRequestMsg(int transactionId, String library, String content) throws IOException{
-        String date = this.calculateDate();
-      //  System.out.print("llamando save request");
-        
+        String date = this.calculateDate();        
         String msg =  "[" + date + "]" + " | "+ transactionId + " | "+ "Petición enviada a la "+ library + ": "+ content;
         this.saveRequest(msg);
      }
 
+
+     /* Almacena la información construida en el archivo de texto */
+     /* Crea el archivo de texto de no existir */
      private void saveRequest(String msg) throws IOException{
          if (!this.file.exists()){
              this.createFile();

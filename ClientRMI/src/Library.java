@@ -23,9 +23,11 @@ public abstract class Library
         this.logger = new Logger();
     }
     
+    /* Métodos abstractos */
     public abstract String getBookByTitle(String title,  int transactionId);
     public abstract List<String> getBookByAuthor(String author, int transactionId);
     
+    /* Se llama al logger para almacenar la petición realizada a las bibliotecas */
     public void saveLog(int transactionId, String content) throws IOException{
         this.logger.saveRequestMsg(transactionId, this.alias, content);
     }

@@ -1,49 +1,25 @@
-[20:04:16] | 688874 | Petición recibida desde Biblioteca A: Pedir libro a
-[20:04:16] | 688874 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
-[20:04:45] | 879115 | Petición recibida desde Biblioteca A: Pedir libro a
-[20:04:45] | 879115 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
-[20:07:36] | 218705 | Petición recibida desde Biblioteca A: Pedir libro ha
-[20:07:36] | 218705 | Respuesta enviada al cliente de la Biblioteca A: The Shadowhunters Chronicles
-[20:09:22] | 467410 | Petición recibida desde Biblioteca A: Get Title ha
-[20:09:22] | 467410 | Petición recibida desde Biblioteca A: Pedir libro ha
-[20:09:22] | 467410 | Respuesta enviada al cliente de la Biblioteca A: The Shadowhunters Chronicles
-[20:41:40] | 968673 | Petición recibida desde Biblioteca A: Get Title Busca un libro...
-[20:41:40] | 968673 | Petición recibida desde Biblioteca A: Pedir libro Busca un libro...
-[20:41:40] | 968673 | Respuesta enviada al cliente de la Biblioteca A: null
-[20:41:54] | 633472 | Petición recibida desde Biblioteca A: Get Title harry potter
-[20:41:54] | 633472 | Petición recibida desde Biblioteca A: Pedir libro harry potter
-[20:41:54] | 633472 | Respuesta enviada al cliente de la Biblioteca A: Harry Potter
-[20:42:10] | 671978 | Petición recibida desde Biblioteca A: Get Title pedro
-[20:42:10] | 671978 | Petición recibida desde Biblioteca A: Pedir libro pedro
-[20:42:10] | 671978 | Respuesta enviada al cliente de la Biblioteca A: null
-[20:42:45] | 490506 | Petición recibida desde Biblioteca A: Get Author Stephenie Meyer<
-[21:09:36] | 709070 | Petición recibida desde Biblioteca C: Get Title harr
-[21:09:36] | 709070 | Petición recibida desde Biblioteca C: Pedir libro harr
-[21:09:36] | 709070 | Respuesta enviada al cliente de la Biblioteca C: Harry Potter
-[21:39:57] | 54403 | Petición recibida desde Biblioteca A: Get Author Busca un libro...
-[21:40:26] | 508041 | Petición recibida desde Biblioteca A: Get Title the
-[21:40:26] | 508041 | Petición recibida desde Biblioteca A: Pedir libro the
-[21:40:26] | 508041 | Respuesta enviada al cliente de la Biblioteca A: The Fault in Our Stars
-[21:45:19] | 641089 | Petición recibida desde Biblioteca A: Get Title pepe
-[21:45:19] | 641089 | Petición recibida desde Biblioteca A: Pedir libro pepe
-[21:45:19] | 641089 | Respuesta enviada al cliente de la Biblioteca A: null
-[21:49:14] | 534764 | Petición recibida desde Biblioteca A: Get Title epale
-[21:49:14] | 534764 | Petición recibida desde Biblioteca A: Pedir libro epale
-[21:49:14] | 534764 | Respuesta enviada al cliente de la Biblioteca A: null
-[21:56:31] | 615376 | Petición recibida desde Biblioteca A: Get Title epale
-[21:56:31] | 615376 | Petición recibida desde Biblioteca A: Pedir libro epale
-[21:56:31] | 615376 | Respuesta enviada al cliente de la Biblioteca A: null
-[21:56:41] | 500345 | Petición recibida desde Biblioteca A: Get Title Busca un libro...
-[21:56:41] | 500345 | Petición recibida desde Biblioteca A: Pedir libro Busca un libro...
-[21:56:41] | 500345 | Respuesta enviada al cliente de la Biblioteca A: null
-[21:56:49] | 855922 | Petición recibida desde Biblioteca A: Get Title Harry Potter
-[21:56:49] | 855922 | Petición recibida desde Biblioteca A: Pedir libro Harry Potter
-[21:56:49] | 855922 | Respuesta enviada al cliente de la Biblioteca A: Harry Potter
-[23:39:42] | 266715 | Petición recibida desde Biblioteca A: Pedir libro Busca un libro...
-[23:39:42] | 266715 | Respuesta enviada al cliente de la Biblioteca A: null
-[23:39:49] | 541387 | Petición recibida desde Biblioteca A: Pedir libro a
-[23:39:49] | 541387 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
-[23:46:02] | 196820 | Petición recibida desde Biblioteca A: Pedir autor a
-[23:46:02] | 196820 | Respuesta enviada al cliente de la Biblioteca A:  - Libro The Shadowhunters Chronicles - Libro Pride and Prejudice
-[23:54:55] | 989119 | Petición recibida desde Biblioteca A: Pedir autor a
-[23:54:55] | 989119 | Respuesta enviada al cliente de la Biblioteca A:  - Libro The Shadowhunters Chronicles - Libro Pride and Prejudice
+[21:42:17] | 775838 | Petición recibida desde Biblioteca A: Get author green
+[21:42:17] | 775838 | Respuesta enviada al cliente de la Biblioteca A: Libros:  [Libro The Fault in Our Stars, Libro Searching for Alaska]
+[22:07:17] | 380474 | Petición recibida desde Biblioteca A: Get author green
+[22:07:17] | 380474 | Respuesta enviada al cliente de la Biblioteca A:  - Libro The Fault in Our Stars - Libro Searching for Alaska
+[22:16:04] | 621932 | Petición recibida desde Biblioteca B: Get Title harry
+[22:16:04] | 621932 | Petición recibida desde Biblioteca B: Pedir libro harry
+[22:16:04] | 621932 | Respuesta enviada al cliente de la Biblioteca B: Harry Potter
+[22:18:20] | 858507 | Petición recibida desde Biblioteca B: Get author green
+[22:18:20] | 858507 | Respuesta enviada al cliente de la Biblioteca B:  - Libro The Fault in Our Stars - Libro Searching for Alaska
+[22:18:41] | 237018 | Petición recibida desde Biblioteca C: Get Title harry potter
+[22:18:41] | 237018 | Petición recibida desde Biblioteca C: Pedir libro harry potter
+[22:18:41] | 237018 | Respuesta enviada al cliente de la Biblioteca C: Harry Potter
+[22:18:42] | 619706 | Petición recibida desde Biblioteca C: Get Title harry potter
+[22:18:42] | 619706 | Petición recibida desde Biblioteca C: Pedir libro harry potter
+[22:18:42] | 619706 | Respuesta enviada al cliente de la Biblioteca C: Harry Potter
+[22:20:41] | 185622 | Petición recibida desde Biblioteca A: Pedir libro a
+[22:20:41] | 185622 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska
+[22:45:18] | 967659 | Petición recibida desde Biblioteca C: Get title : harry
+[22:45:18] | 967659 | Respuesta enviada al cliente de la Biblioteca C: Harry Potter
+[22:45:20] | 203848 | Petición recibida desde Biblioteca B: Get title : ha
+[22:45:20] | 203848 | Respuesta enviada al cliente de la Biblioteca B: The Shadowhunters Chronicles
+[22:45:46] | 790510 | Petición recibida desde Biblioteca B: Get author green
+[22:45:46] | 790510 | Respuesta enviada al cliente de la Biblioteca B:  - Libro The Fault in Our Stars - Libro Searching for Alaska
+[22:46:04] | 589361 | Petición recibida desde Biblioteca A: Pedir libro : a
+[22:46:04] | 589361 | Respuesta enviada al cliente de la Biblioteca A: Searching for Alaska

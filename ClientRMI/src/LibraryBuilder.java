@@ -11,21 +11,21 @@ import java.util.List;
  *
  * @author Tete
  */
+
+/* Realiza una abstracción de las librerías remotas y local. */ 
 public class LibraryBuilder {
     Library client;
     Logger logger;
+
     public LibraryBuilder(Library client){
-        this.client = client;
-        
+        this.client = client;   
     }
-    
+
     public String getBookByTitle(String title, int transactionId){
         return this.client.getBookByTitle(title, transactionId);
     }
     
     public List<String> getBookByAuthor(String author, int transactionId){
         return this.client.getBookByAuthor(author,transactionId);
-    }   
-    
-
+    }     
 }

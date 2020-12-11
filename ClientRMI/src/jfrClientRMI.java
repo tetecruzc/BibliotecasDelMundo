@@ -5,7 +5,10 @@ import java.awt.Font;
 import java.io.File;
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.Level;
@@ -32,8 +35,8 @@ import org.w3c.dom.NodeList;
  */
 public class jfrClientRMI extends javax.swing.JFrame {
     DefaultTableModel model = new DefaultTableModel();
-
     List<Library> librariesList = null;
+
     enum tags {name, ip, server, port, local, alias,  library};
     Boolean searchByBook = true;
     /**
@@ -42,7 +45,7 @@ public class jfrClientRMI extends javax.swing.JFrame {
      */
     public jfrClientRMI() {
         initComponents();
-         NodeList nodeList = this.getData("src/assets/LibrariesData.xml");
+         NodeList nodeList = this.getLibrariesData("src/assets/LibrariesData.xml");
         if(this.librariesList == null){
             this.createLibraries(nodeList);
         }
@@ -54,10 +57,17 @@ public class jfrClientRMI extends javax.swing.JFrame {
         jTable1.getTableHeader().setFont(new Font("Gujarati Sangam MN", Font.BOLD,12));
         jTable1.getTableHeader().setOpaque(false);
         jTable1.getTableHeader().setBackground(new Color(255,255,255));
-       // jTable1.getTableHeader().setForeground(new Color(255,255,255));
         jTable1.setRowHeight(25);
     }
 
+    /* Se calcula la fecha actual */
+     private String calculateDate(){
+        DateFormat dateFormat = new SimpleDateFormat("HH:mm:ss");
+        Date date = new Date();
+        return dateFormat.format(date);
+     }
+    
+    /* Se crea la tabla de búsquedas de libros consultados, y se añaden los títulos del "header" */
     public void CreatingTable(){
         ArrayList<Object>columnName= new ArrayList<Object>();
         columnName.add("Título del libro");
@@ -65,10 +75,10 @@ public class jfrClientRMI extends javax.swing.JFrame {
         for (Object column: columnName){
             model.addColumn(column);
         }
-        this.jTable1.setModel(model);
-        
+        this.jTable1.setModel(model);    
     }
 
+    /* Se añaden los libros retornados por el servidor a los registros de la tabla de resultados */
     public void AddToTable(List<String> book, String selectedLibrary){
         ArrayList<Object[]>data= new ArrayList<Object[]>();
                    
@@ -79,6 +89,7 @@ public class jfrClientRMI extends javax.swing.JFrame {
         jTable1.setModel(model);  
     }
 
+    /* Se añaden al "JComboBox" los nombres de las librerías existentes */
     public void getLibrariesNames(NodeList nodeList){
         String tag = tags.name.toString();
         
@@ -89,10 +100,12 @@ public class jfrClientRMI extends javax.swing.JFrame {
              }
     }
     
+    /* Se genera un número aleatorio, para el Id de la transacción */
     public int generateTransactionId(){
         return (int) (Math.random() * 999999) + 1;
     }
       
+    /* Se crean las bibliotecas con la información almacenada en el archivo "LibrariesData.xml" */
     public void createLibraries(NodeList nodeList){
         this.librariesList =  new ArrayList<Library>();
         for(int i=0;i<nodeList.getLength();i++){
@@ -103,21 +116,22 @@ public class jfrClientRMI extends javax.swing.JFrame {
             String name = element.getElementsByTagName(tags.name.toString()).item(0).getTextContent();
             String ip = element.getElementsByTagName(tags.ip.toString()).item(0).getTextContent();
             String server = element.getElementsByTagName(tags.server.toString()).item(0).getTextContent();
-            String alias = element.getElementsByTagName(tags.alias.toString()).item(0).getTextContent();
-            
+           // String alias = element.getElementsByTagName(tags.alias.toString()).item(0).getTextContent();      
             int  port = Integer.parseInt(element.getElementsByTagName(tags.port.toString()).item(0).getTextContent());
 
+            /* Dependiendo de si la biblioteca seleccionada es local o remota, se crearán sus instancias */
             if (element.getElementsByTagName(tags.local.toString()).item(0).getTextContent().contains("true")){
-              library = new LocalLibrary(name, ip, port, server, alias);
+              library = new LocalLibrary(name, ip, port, server, "Biblioteca A");
             }else{
-              library = new RemoteLibrary(name, ip, port, server, alias);
+              library = new RemoteLibrary(name, ip, port, server, "Biblioteca A");
             }
                  
             this.librariesList.add(library);  
         }
     }
     
-    public NodeList getData(String url){
+    /* Retorna el contenido del archivo dado por parámetro */
+    public NodeList getLibrariesData(String url){
         NodeList nodeList = null ;
             try{
              File file = new File(url);
@@ -126,13 +140,15 @@ public class jfrClientRMI extends javax.swing.JFrame {
              Document document = db.parse(file);
              document.getDocumentElement().normalize(); 
              nodeList = document.getElementsByTagName(tags.library.toString());
-             return  nodeList;
+             return nodeList;
             }
             catch(Exception ex){
                  System.out.println(ex.getMessage());
             }
             return nodeList;
     }
+
+    /* Se inicializan los componentes de la interfaz gráfica */
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -575,6 +591,8 @@ public class jfrClientRMI extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldSearchesActionPerformed
 
+
+    /* Acciona todo el proceso de búsqueda de un libro */
     private void jButtonSearchesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSearchesActionPerformed
         // TODO add your handling code here:
        

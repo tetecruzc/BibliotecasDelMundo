@@ -6,27 +6,27 @@ and open the template in the editor.
 -->
 <libraries>
     <library>
-        <name>Biblioteca B</name>
-        <ip>127.0.0.1</ip>
-        <server>RemoteRMI_B</server>
-        <local>true</local>
-        <port>7778</port>
-        <alias>Biblioteca A</alias>
-    </library>
-    <library>
-        <name>Biblioteca C</name>
-        <ip>127.0.0.1</ip>
-        <server>RemoteRMI_C</server>
-        <local>true</local>
-        <port>7778</port>
-        <alias>Biblioteca C</alias>
-    </library>
-    <library>
-        <name>Local</name>
+        <name>Biblioteca local</name>  <!-- TETE -->
         <ip>127.0.0.1</ip>
         <server>RemoteRMI_A</server>
         <local>true</local>
         <port>7778</port>
         <alias>Biblioteca A</alias>
+    </library>
+    <library>
+        <name>Biblioteca B</name> <!-- DIEGO  -->
+        <ip>10.2.126.76</ip>
+        <server>RemoteRMI_B</server>
+        <local>false</local>
+        <port>7778</port>
+        <alias>Biblioteca B</alias>
+    </library>
+    <library>
+        <name>Biblioteca C</name>   <!-- MICHI  -->
+        <ip>10.2.126.83</ip>
+        <server>RemoteRMI_C</server>
+        <local>false</local>
+        <port>7778</port>
+        <alias>Biblioteca C</alias>
     </library>
 </libraries>

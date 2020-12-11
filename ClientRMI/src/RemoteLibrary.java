@@ -26,7 +26,6 @@ public class RemoteLibrary extends Library{
         this.alias = alias;
         
         try{
-            //Comentado mientras probamos remoto
            Registry registro = LocateRegistry.getRegistry(ip, port);
            this.interfaz =(Middleware)registro.lookup(serverName);
         }
@@ -35,7 +34,8 @@ public class RemoteLibrary extends Library{
         }
     }
 
-
+    /* Retorna el libro solicitado por título, a través del lenguaje común: "Get Title" */
+    /* Implementación del método de la clase abstracta Library */
     @Override
     public String getBookByTitle(String title, int transactionId) {
         String book = null;
@@ -51,6 +51,8 @@ public class RemoteLibrary extends Library{
         return book;
     }
 
+    /* Retorna los libros solicitados por autor, a través del lenguaje común: "Get author" */
+    /* Implementación del método de la clase abstracta Library */
     @Override
     public List<String> getBookByAuthor(String author,  int transactionId) {
         List<String> books = new ArrayList<String>(); 

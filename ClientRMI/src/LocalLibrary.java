@@ -18,12 +18,14 @@ import java.util.logging.Logger;
  * @author alley
  */
 public class LocalLibrary extends Library{
+
      public LocalLibrary(String name, String ip, int port, String serverName, String alias){
         super();
         this.name = name;
         this.alias = alias;
         
         try{
+            /* Construye el registro del RMI, y crea una instancia de la clase del servidor. */
             Registry registro = LocateRegistry.getRegistry(ip, port);
             this.interfaz =(Middleware)registro.lookup(serverName);
         }
@@ -32,6 +34,7 @@ public class LocalLibrary extends Library{
         }
     }
 
+    /* Retorna el libros solicitados por título, a través del lenguaje local: "Pedir líbro" */
     @Override
     public String getBookByTitle(String title, int transactionId){
         String book = null;
@@ -47,7 +50,7 @@ public class LocalLibrary extends Library{
         return book;   
     }
 
-    
+    /* Retorna los libros solicitados por autor, a través del local: "Pedir autor" */
     @Override
     public List<String> getBookByAuthor(String author, int transactionId){
         List<String> books = new ArrayList<String>(); 

@@ -10,3 +10,11 @@
 [23:39:50] | 541387 | Petición enviada a la Biblioteca A: Pedir libro a
 [23:46:03] | 196820 | Petición enviada a la Biblioteca A: Pedir autor a
 [23:54:55] | 989119 | Petición enviada a la Biblioteca A: Pedir autor a
+[20:00:34] | 659808 | Petición enviada a la Biblioteca B: Get titleha
+[20:00:57] | 772402 | Petición enviada a la Biblioteca B: Get authorjhon
+[20:01:08] | 180288 | Petición enviada a la Biblioteca B: Get authorjohn
+[20:02:39] | 442184 | Petición enviada a la Biblioteca B: Get authora
+[20:02:44] | 709750 | Petición enviada a la Biblioteca B: Get authorj
+[21:29:47] | 994849 | Petición enviada a la Biblioteca A: Pedir libro a
+[22:20:42] | 185622 | Petición enviada a la Biblioteca A: Pedir libro a
+[22:46:04] | 589361 | Petición enviada a la Biblioteca A: Pedir libro a
