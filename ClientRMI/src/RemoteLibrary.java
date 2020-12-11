@@ -41,13 +41,12 @@ public class RemoteLibrary extends Library{
         String book = null;
         try {
            book =  this.interfaz.getTitle(title, this.alias, transactionId);
-           this.saveLog(transactionId, "Get title"+ title);
+           this.saveLog(transactionId, "Get title "+ title);
         } catch (RemoteException ex) {
             Logger.getLogger(RemoteLibrary.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {
              Logger.getLogger(RemoteLibrary.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
         return book;
     }
 
@@ -58,7 +57,7 @@ public class RemoteLibrary extends Library{
         List<String> books = new ArrayList<String>(); 
         try {
            books =  this.interfaz.getAuthor(author, this.alias, transactionId);
-           this.saveLog(transactionId, "Get author"+ author);
+           this.saveLog(transactionId, "Get author "+ author);
         } catch (RemoteException ex) {
             Logger.getLogger(RemoteLibrary.class.getName()).log(Level.SEVERE, null, ex);
         } catch (IOException ex) {

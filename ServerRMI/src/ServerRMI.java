@@ -164,7 +164,7 @@ public class ServerRMI extends UnicastRemoteObject implements Middleware{
        return book;
     }
 
-     /* Lenguaje común Z39 */
+    /* Lenguaje común Z39 */
     /* Llama al lenguaje natural de la biblioteca local. getBooksByAuthor() */
     @Override
     public List<String> getAuthor(String author, String library, int transactionId) throws RemoteException {
