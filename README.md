@@ -1,6 +1,6 @@
 # Bibliotecas del mundo 📚🌎
 
-Proyecto realizado en la cátedra de "Sistemas distribuidos" en el 9no semestre.
+Proyecto #1, realizado en la cátedra de "Sistemas distribuidos" en el 9no semestre.
 
 
 ### Autores 🖋
